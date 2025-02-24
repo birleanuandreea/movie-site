@@ -1,29 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE persoane [
-<!ELEMENT persoana (nume, prenume, varsta, telefon, adresa, data_nasterii)>
-<!ATTLIST id>
-<!ELEMENT nume (#PCDATA)>
-<!ELEMENT prenume (#PCDATA)>
-<!ELEMENT varsta (#PCDATA)>
-<!ELEMENT telefon (#PCDATA)>
-<!ELEMENT adresa (strada, numar, localitate, judet, tara, cod_postal)>
-<!ELEMENT strada (#PCDATA)>
-<!ELEMENT numar (#PCDATA)>
-<!ELEMENT localitate (#PCDATA)>
-<!ELEMENT judet (#PCDATA)>
-<!ELEMENT tara (#PCDATA)>
-<!ELEMENT cod_postal (#PCDATA)>
-<!ELEMENT data_nasterii (zi, luna, an)>
-<!ELEMENT zi (#PCDATA)>
-<!ELEMENT luna (#PCDATA)>
-<!ELEMENT an (#PCDATA)>
-]>
+<!DOCTYPE persoane SYSTEM "validare_persoane.dtd">
+
 <persoane>
-    <persoana id="1">
+    <persoana id="i1">
         <nume>Popescu</nume>
         <prenume>Ion</prenume>
         <varsta>22</varsta>
         <telefon>0747116566</telefon>
+        <email>ionpopescu@gmail.com</email>
         <adresa>
             <strada>Hapau</strada>
             <numar>11</numar>
@@ -38,11 +22,12 @@
             <an>2002</an>
         </data_nasterii>
     </persoana>
-    <persoana id="2">
+    <persoana id="i2">
         <nume>Birleanu</nume>
         <prenume>Andreea</prenume>
         <varsta>24</varsta>
         <telefon>0730005530</telefon>
+        <email>andreeabirleanu14@gmail.com</email>
         <adresa>
             <strada>Florilor</strada>
             <numar>25</numar>
@@ -57,11 +42,12 @@
             <an>2000</an>
         </data_nasterii>
     </persoana>
-    <persoana id="3">
+    <persoana id="i3">
         <nume>Puravet</nume>
         <prenume>Adina</prenume>
         <varsta>34</varsta>
         <telefon>0754506323</telefon>
+        <email>puravet_adina@gmail.com</email>
         <adresa>
             <strada>Alee Nicolina</strada>
             <numar>30</numar>
@@ -76,11 +62,12 @@
             <an>1995</an>
         </data_nasterii>
     </persoana>
-    <persoana id="4">
+    <persoana id="i4">
         <nume>Stefan</nume>
         <prenume>Iulian</prenume>
         <varsta>34</varsta>
         <telefon>0753608329</telefon>
+        <email>stefaniuliana@gmail.com</email>
         <adresa>
             <strada>Piata Unirii</strada>
             <numar>10</numar>
@@ -95,11 +82,12 @@
             <an>1990</an>
         </data_nasterii>
     </persoana>
-    <persoana id="5">
+    <persoana id="i5">
         <nume>Ionescu</nume>
         <prenume>Ana</prenume>
         <varsta>26</varsta>
         <telefon>0711349876</telefon>
+        <email>anaionescu@gmail.com</email>
         <adresa>
             <strada>Bancii</strada>
             <numar>3</numar>
