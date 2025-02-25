@@ -1,6 +1,6 @@
 <!ELEMENT persoane (persoana+)>
 <!ELEMENT persoana (nume, prenume, varsta, telefon, email, adresa, data_nasterii)>
-<!ATTLIST persoana id ID #REQUIRED>
+<!ATTLIST persoana id CDATA #REQUIRED>
 
 <!ELEMENT nume (#PCDATA)>
 <!ELEMENT prenume (#PCDATA)>
