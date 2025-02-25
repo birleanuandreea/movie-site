@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE persoane SYSTEM "validare_persoane.dtd">
-
 <persoane>
-    <persoana id="i1">
+    <persoana id="1">
         <nume>Popescu</nume>
         <prenume>Ion</prenume>
         <varsta>22</varsta>
@@ -22,7 +20,7 @@
             <an>2002</an>
         </data_nasterii>
     </persoana>
-    <persoana id="i2">
+    <persoana id="2">
         <nume>Birleanu</nume>
         <prenume>Andreea</prenume>
         <varsta>24</varsta>
@@ -42,7 +40,7 @@
             <an>2000</an>
         </data_nasterii>
     </persoana>
-    <persoana id="i3">
+    <persoana id="3">
         <nume>Puravet</nume>
         <prenume>Adina</prenume>
         <varsta>34</varsta>
@@ -62,7 +60,7 @@
             <an>1995</an>
         </data_nasterii>
     </persoana>
-    <persoana id="i4">
+    <persoana id="4">
         <nume>Stefan</nume>
         <prenume>Iulian</prenume>
         <varsta>34</varsta>
@@ -82,7 +80,7 @@
             <an>1990</an>
         </data_nasterii>
     </persoana>
-    <persoana id="i5">
+    <persoana id="5">
         <nume>Ionescu</nume>
         <prenume>Ana</prenume>
         <varsta>26</varsta>
