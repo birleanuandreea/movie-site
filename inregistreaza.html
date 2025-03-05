@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ro-RO">
+    <head>
+        <title>Înregistare</title>
+        <meta charset="UTF-8">
+    </head>
+    <nav>
+        <a href="index.html">Acasă</a> |
+        <a href="inregistreaza.html">Înregistrează</a> |
+        <a href="video.html">Video</a> |
+        <a href="despre.html">Despre</a> |
+        <a href="desen.html">Desen</a>
+    </nav>
+    <body>
+        <form>
+            <h3>Informații generale:</h3>
+            <fieldset>
+                <label for="nume_utilizator">Nume utilizator:</label>
+                <input type="text" id="nume_utilizator" name="nume_utilizator"><br>
+                <label for="parola">Parola:</label>
+                <input type="password" id="parola" name="parola"><br>
+                <label for="nume">Nume:</label>
+                <input type="text" id="nume" name="nume"><br>
+                <label for="prenume">Prenume:</label>
+                <input type="text" id="prenume" name="prenume"><br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email"><br>
+                <label for="telefon">Telefon:</label>
+                <input type="tel" id="telefon" name="telefon" pattern="07[0-9]{2}-[0-9]{3}-[0-9]{3}">
+            </fieldset>   
+            <h3>Informații personale:</h3>
+            <fieldset>
+                <label for="sex">Sex:</label>
+                <select id="sex" name="sex">
+                    <option value="masculin">masculin</option>
+                    <option value="feminin">feminin</option>
+                </select><br>
+                <label for="mancare">Mâncare preferată:</label>
+                <input list="mancaruri" id="mancare" name="mancare">
+                <datalist id="mancaruri">
+                    <option value="Pizza"></option>
+                    <option value="Paste"></option>   
+                    <option value="Salată"></option>    
+                    <option value="Ciorbă"></option>
+                    <option value="Burger"></option>   
+                </datalist><br>
+                <label for="culoare">Culoare preferată:</label>
+                <input type="color" id="culoare" name="culoare"><br>
+                <label for="data">Data nașterii:</label>
+                <input type="date" id="data" name="data"><br>
+                <label for="ora">Ora nașterii:</label>
+                <input type="time" id="ora" name="ora"><br>
+                <label for="varsta">Vârstă:</label>
+                <input type="range" id="varsta" name="varsta"><br>
+                <label for="adresa">Adresa paginii personale:</label>
+                <input type="url" id="adresa" name="adresa"><br>
+                <label for="descriere">Descriere:</label>
+                <textarea id="descriere" name="descriere" rows="2" cols="15"></textarea>
+            </fieldset>
+            <br><button type="button" disabled>Înregistrează</button>
+        </form>  
+    </body>
+</html>
