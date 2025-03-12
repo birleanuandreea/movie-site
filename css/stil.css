@@ -1,0 +1,101 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #333;
+    background-color: aliceblue;
+
+}
+
+header { 
+    display: flex; 
+    align-items: center;
+    background-color:#407ecf;
+}
+
+header img {
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+header h1 {
+    font-family:'Courier New', Courier, monospace;
+    font-style: italic;
+    font-size: 90px; 
+    color:#e1e6ed;
+}
+
+nav{
+    background-color: #3a7ef2;
+    text-align: left;
+    padding: 15px;
+}
+
+nav a{
+    padding: 8px 16px;
+    margin-right: 10px;
+    font-size: large;
+    text-decoration: none;
+    color: white;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 1.2em;
+}
+
+nav a:hover{
+    background-color: #333;
+    text-decoration: underline;
+    font-size: 1.5em;
+}
+
+table{
+    border: 1px solid black;
+}
+
+td{
+    border: 1px solid black;
+    padding: 8px;   
+}
+
+input::placeholder{
+    color:#3a7ef2;
+    opacity: 0.5;
+}
+
+input [type=text], select{
+    width: 25%;
+    padding: 12px 20px;
+    margin: 8px 0;
+}
+
+input [type=text], [type=range]{
+    width: 25%;
+}
+
+label{
+    font-family:Arial, Helvetica, sans-serif;
+    color:darkred;
+}
+
+legend{
+    font-weight: bold;
+    color: darkred;
+    font-size: 1.2em;
+    padding: 12px 20px;
+    margin: 8px 0;
+}
+
+
+fieldset:last-child{
+    width: 100%;
+  background-color:beige;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: 1.em;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button{
+    color: darkred;
+    background-color:aliceblue;
+    height: 2.2em;
+}
