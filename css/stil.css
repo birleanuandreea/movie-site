@@ -1,8 +1,9 @@
+/* ---------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* personalizare body, nav, header, footer din fiecare pagina */
 body{
     font-family: Arial, Helvetica, sans-serif;
     color: #333;
     background-color: aliceblue;
-
 }
 
 header { 
@@ -12,14 +13,13 @@ header {
 }
 
 header img {
-    margin-right: 20px;
-    margin-left: 20px;
+    margin: 10px;
 }
 
 header h1 {
     font-family:'Courier New', Courier, monospace;
     font-style: italic;
-    font-size: 90px; 
+    font-size: 60px; 
     color:#e1e6ed;
 }
 
@@ -45,6 +45,37 @@ nav a:hover{
     font-size: 1.5em;
 }
 
+main ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+main ul li {
+    padding: 10px; 
+    font-size: 1.1em; 
+    line-height: 1.6; 
+}
+
+main ul li b {
+    color: #407ecf;
+}
+
+footer{
+    background-color: #407ecf; 
+    color: white; 
+    text-align: center; 
+    padding: 5px; 
+    font-family: Arial, sans-serif; 
+    font-size: 1.2em; 
+    margin-top: 50px;
+}
+
+
+
+
+/* ------------------------------------------------------------------------------------------------------------------------------------- */
+/* personalizarea tabelului din pagina despre.html */
 table{
     border: 1px solid black;
 }
@@ -59,43 +90,225 @@ input::placeholder{
     opacity: 0.5;
 }
 
-input [type=text], select{
-    width: 25%;
-    padding: 12px 20px;
-    margin: 8px 0;
-}
-
-input [type=text], [type=range]{
-    width: 25%;
+select{
+    width: 15%;
+    padding: 5px;
+    margin: 8px;
+    border-radius: 5px;
 }
 
 label{
     font-family:Arial, Helvetica, sans-serif;
     color:darkred;
+    padding: 5px;
+    margin-bottom: 10px; 
+    display: inline-block;   
 }
 
 legend{
     font-weight: bold;
     color: darkred;
     font-size: 1.2em;
-    padding: 12px 20px;
-    margin: 8px 0;
-}
-
-
-fieldset:last-child{
-    width: 100%;
-  background-color:beige;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: 1.em;
-  border-radius: 4px;
-  cursor: pointer;
+    padding: 15px;
+    margin: 8px;
+    display: inline-block;
 }
 
 button{
     color: darkred;
-    background-color:aliceblue;
-    height: 2.2em;
+    background-color:white;
+    height: 3em;
+    width: 8em;
+    font-size: medium;
+    margin: 5px;
+    border: 2px solid #3a7ef2;
+    cursor: pointer;
+    border-radius: 25px;
+}
+button:hover {
+    background-color: #20608B;
+}
+
+fieldset{
+    margin: 5px;
+    border: 2px solid #3a7ef2;
+    border-radius: 25px;
+}
+
+
+
+/* ------------------------------------------------------------------------------------------------------------ */
+/* 5 elemente specifice CSS3 aplicate paginii despre.html*/
+
+/* Gradients */
+#grad{
+    height: 50px;
+    background-image: linear-gradient(white, blue);
+}
+
+/* Rounded Corners */
+.rcorners{
+    font-size: large;
+    font-weight: bold;
+    border-radius: 25px;
+    border: 2px solid #3a7ef2;
+    padding: 20px; 
+    width: 100px;
+    height: 20px;
+    text-align: center;
+}
+
+/* Text Overflow */
+.textEffect{
+    white-space: nowrap; 
+    width: 200px; 
+    border: 2px solid #3a7ef2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.textEffect:hover{
+    overflow: visible;
+}
+
+/* Transition + Transformation */
+#t:hover{
+    transition: width 2s, height 2s, transform 2s;
+    transform: rotate(180deg);
+}
+
+
+/* Animation */
+.animation{
+    width: 400px;
+    height: 30px;
+    background-color: red;
+    animation-name: example;
+    animation-duration: 4s;
+    font-size: 1.8em;
+    color: black;
+  }
+  
+  @keyframes example {
+    from {background-color: red;}
+    to {background-color: yellow;}
+  }
+
+
+
+
+  /* ----------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+  /* print friendly */
+@media print {
+    header, nav, footer {
+      display: none;
+    }
+  
+    
+    body {
+      background-color: white;
+      color: black; 
+      font-family: 'Times New Roman', Times, serif; 
+      font-size: 12pt;
+    }
+  
+   
+    @page {
+      margin: 2cm;
+    }
+  
+    
+    h1, h2, h3 {
+      font-weight: bold;
+      font-size: 14pt;
+    }
+
+    p {
+      line-height: 1.6;
+      margin-bottom: 10mm;
+    }
+  
+    input::placeholder, textarea::placeholder {
+      visibility: hidden;
+    }
+
+    .animation
+    {
+        animation: none;
+        background-color: white;
+        font-size: 14pt;
+    }
+
+    .rcorners, .textEffect, #grad {
+      border: none;
+      background: none;
+      overflow: visible;
+    }
+  }
+  
+
+
+/* ------------------------------------------------------------------------------------------------------------ */
+/* Media query pentru ecranelor mici (telefoane mobile) */
+@media (max-width: 600px) {
+    body {
+      font-size: 14px; 
+      padding: 10px; 
+    }
+  
+    header {
+      flex-direction: column; 
+      align-items: center;
+    }
+  
+    nav {
+      text-align: center;
+      padding: 10px;
+    }
+  
+    nav a {
+      display: block; 
+      margin-bottom: 5px;
+      font-size: 1em; 
+    }
+  
+    footer {
+      font-size: 12px; 
+      padding: 5px;
+    }
+  }
+  
+
+
+/* ------------------------------------------------------------------------------------------------------------ */
+/* Galeria video */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.gallery iframe {
+    margin: 10px;
+    border: 1px solid #ccc;
+}
+
+.gallery iframe:nth-child(1) {
+    width: 450px;
+    height: 250px;
+}
+
+.gallery iframe:nth-child(2) {
+    width: 350px;
+    height: 250px;
+}
+
+.gallery iframe:nth-child(3) {
+    width: 250px;
+    height: 200px;
+}
+
+.gallery iframe:nth-child(4) {
+    width: 250px;
+    height: 130px;
 }

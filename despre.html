@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title>Despre</title>
         <link rel="stylesheet" href="css/stil.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <nav>
         <a href="index.html">Acasă</a> |
@@ -13,8 +14,8 @@
         <a href="desen.html">Desen</a>
     </nav>
     <body>
-        <h1>Diferite genuri de filme</h1>
-        <h2>Ce însemnă un film de gen?</h2>
+        <h1 id="grad" style="color: black; padding-top: 10px;">Diferite genuri de filme</h1>
+        <h2 class="animation">Ce însemnă un film de gen?</h2>
         <p>
             Un <b>film de gen</b>
             este un film care se încadrează într-o categorie specifică, definită de <i>intrigă</i>, <i>teme</i>, <i>ton</i> și <i>stil</i>. 
@@ -24,11 +25,9 @@
             Există genuri de filme binecunoscute, precum acțiunea, comedia sau drama, dar și clasificări mai complexe care duc la diversificarea acestora. 
             În această publicație, vom explora cele mai populare genuri de filme și ce le face speciale. Un exemplu de platformă unde poți descoperi o varietate de genuri cinematografice este
             <a href="https://www.netflix.com/ro-en/login?nextpage=https%3A%2F%2Fwww.netflix.com%2Fbrowse"> https://www.netflix.com/ro-en/login?nextpage=https%3A%2F%2Fwww.netflix.com%2Fbrowse</a>.                 
-            <br>
-            Imaginea are atributul <small>height</small> de valoare 250.
-            <br>
-            <img src = "Imagini/netflix.jpg" alt = "" width = "300" height = "250">
         </p>
+        <p class="textEffect">Imaginea are atributul <small>height</small> de valoare 250.</p>
+        <img id="t" src = "Imagini/netflix.jpg" alt = "" width = "300" height = "250">
         <p>Următorul tabel ilustrează <b><i>principalele genuri cinematografice</i></b>, împreună cu exemple de filme ce se potrivesc fiecărui gen, pentru a ajuta la alegerea unui film pe gustul tău.</p>
             <table>
                 <tr>    <!-- rand nou -->
@@ -62,13 +61,13 @@
             <a href="https://www.premiumbeat.com/blog/guide-to-basic-film-genres/"> A Guide to the Basic Film Genres</a>
             de la adresa <a href="https://www.premiumbeat.com/blog/guide-to-basic-film-genres/"> https://www.premiumbeat.com/blog/guide-to-basic-film-genres/</a>.
         </p>
-        <label>Abonare newsletter:</label>
+        <label class="rcorners">Abonare newsletter:</label>
             <form>
                 <label for="nume">Nume:</label>
-                <input type="text" id="nume" name="nume">
+                <input type="text" id="nume" name="nume" placeholder="Birleanu">
                 <br>
                 <label for="prenume">Prenume:</label>
-                <input type="text" id="prenume" name="prenume">
+                <input type="text" id="prenume" name="prenume" placeholder="Andreea">
                 <br>
                 <label for="parola">Parola:</label>
                 <input type="password" id="parola" name="parola">
@@ -79,7 +78,7 @@
                 </select>
                 <br>
                 <label for="descriere">Descriere:</label>
-                <textarea id="descriere" name="mesaj" rows="2" cols="15" style="overflow:scroll"></textarea>
+                <textarea id="descriere" name="mesaj" rows="2" cols="15" placeholder="Descrieți filmul vostru preferat"></textarea>
                 <br>
                 <input type="checkbox" id="check1" name="check1">
                 <label for="check1">Sunt de acord cu condițiile</label>
@@ -101,5 +100,8 @@
             îți va oferi comparații utile între platformele de streaming.
         <iframe src="https://www.pcmag.com/picks/best-movie-streaming-services" width="800" height="250" title="a"></iframe>
         </p>
+        <footer>
+            <p>&copy; 2025. Pasiune pentru filme.</p>
+        </footer>
     </body>
 </html>
