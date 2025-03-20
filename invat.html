@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ro-RO">
+    <head>
+        <title>Învăț</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/stil.css">
+        <script src="js/script.js" defer></script>
+    </head>
+    <body onload="InitPage()">
+        <nav>
+            <a href="index.html">Acasă</a>
+            <a href="inregistreaza.html">Înregistrează</a>
+            <a href="video.html">Video</a>
+            <a href="despre.html">Despre</a>
+            <a href="desen.html">Desen</a>
+            <a href="invat.html">Învăț</a>
+        </nav>
+        <aside>
+            <a href="#info">Informații</a>
+            <a href="#canvas">Desenează!</a>
+        </aside>
+        <section id="info">
+            <h2>Informații</h2>
+            <h3>Data și timpul curent:</h3>
+            <p id="dataTimp"></p>
+            <h3>Adresa URL a paginii curente:</h3>
+            <p id="url"></p>
+            <h3>Locația curentă a utilizatorului:</h3>
+            <p id="locatie"></p>
+            <h3>Browser:</h3>
+            <p id="browser"></p>
+            <h3>Sistemul de operare:</h3>
+            <p id="sistemOperare"></p>
+        </section>
+        <section id="canvas">
+            <h2>Desenează!</h2>
+            <label for="favcolor">Selectați culoarea interiorului:</label>
+            <input type="color" id="favcolor" name="favcolor" value="#ee82ee">
+            <br>
+            <label for="favcolor">Selectați culoarea conturului:</label>
+            <input type="color" id="favcolor" name="favcolor" value="#00ced1">
+            <br>
+            <button id="erase" style="margin-bottom: 5px;">Șterge</button><br>
+            <br>
+            <canvas id="myCanvas" width="700" height="400" style="border:1px solid black"></canvas>
+        </section>
+        <footer>
+            <p>&copy; 2025. Pasiune pentru filme.</p>
+        </footer>
+    </body>
+</html>
