@@ -71,18 +71,7 @@ footer{
     margin-top: 50px;
 }
 
-aside{
-    position: fixed;
-    right: 300px; 
-    background-color: white; 
-    padding:10px;
-}
 
-aside a{
-    text-decoration: none;
-    font-size: 2.2em;
-    display: block;
-}
 
 
 
@@ -91,11 +80,14 @@ aside a{
 /* personalizarea tabelului din pagina despre.html */
 table{
     border: 1px solid black;
+
 }
 
 td{
     border: 1px solid black;
-    padding: 8px;   
+    padding: 8px;
+    height: 30px;
+    width: 100px;   
 }
 
 input::placeholder{
@@ -131,12 +123,13 @@ button{
     color: darkred;
     background-color:white;
     height: 3em;
-    width: 8em;
+    width: 9em;
     font-size: medium;
     margin: 5px;
     border: 2px solid #3a7ef2;
     cursor: pointer;
     border-radius: 25px;
+    /* margin-bottom: 5px; */
 }
 button:hover {
     background-color: #20608B;
@@ -324,4 +317,98 @@ fieldset{
 .gallery iframe:nth-child(4) {
     width: 250px;
     height: 130px;
+}
+
+
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* Pagina Invat.html */
+
+
+/* Aside */
+aside {
+    width: 500px;                  /* latimea pentru aside */
+    background-color: #f9f9f9;     
+    padding: 15px;                 /* spatiu interior */
+    border-radius: 10px;           
+    font-family: Arial, sans-serif; 
+    position: fixed;                /* fixare aside pe pagina */
+    top: 300px;                     /* margine sus */
+    right: 20px;                    /* margine dreapta */
+    border: 2px solid #3a7ef2;               
+}
+
+
+aside a {
+    text-align: center;
+    display: block;               
+    color: #3a7ef2;                  
+    text-decoration: none;        
+    font-size: 25px;              
+    padding: 10px 0;              
+    margin-bottom: 10px;      
+}
+
+
+aside a:hover {
+    background-color: #ee82ee;     /* culoare de fundal la hover */
+    color: white;                  /* culoare text la hover */
+    border-radius: 5px;            /* colturi rotunjite la hover */
+    padding-left: 15px;            /* adaugare spatiu la stanga la hover */
+}
+
+canvas{
+    border:2px solid black
+}
+.row-delimiter{
+    height: 15px;
+}
+.column-delimiter{
+    width: 50px;
+}
+
+
+/* Stiluri pentru sectiuni */
+#info, #draw, #table {
+    background-color: #f9f9f9;      
+    padding: 20px;                   
+    margin: 20px;              
+    width: 60%;                      
+    border-radius: 10px;             
+    font-family: 'Arial', sans-serif; 
+}
+
+
+#info h1, #draw h1, #table h1 {
+    color: #3a7ef2;                    
+    font-size: 28px;                 
+    text-align: center;              
+    margin-bottom: 15px;             
+}
+
+#info h3, #draw label, #table label{
+    color: #555;                    
+    font-size: 20px;                 
+    margin-top: 15px;                
+    margin-bottom: 5px;              
+}
+
+
+#dataTimp, #url, #locatie, #browser, #sistemOperare, #table p {
+    color: #666;                     
+    font-size: 16px;                 
+    margin-bottom: 20px;             
+    color: #333;                    
+}
+
+
+#info:hover, #draw:hover, #table:hover {
+    background-color: #f1f1f1;       
+    
+}
+
+/* Stiluri pentru canvas */
+#draw canvas {
+    display: block;                   /* face canvas-ul un element block */
+    margin: 20px auto;                /* centrarea canvas-ului pe pagina */
+
 }
