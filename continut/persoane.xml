@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persoane>
+    <persoana id="1">
+        <nume>Popescu</nume>
+        <prenume>Ion</prenume>
+        <varsta>22</varsta>
+        <telefon>0747116566</telefon>
+        <email>ionpopescu@gmail.com</email>
+        <adresa>
+            <strada>Hapau</strada>
+            <numar>11</numar>
+            <localitate>Dolhasca</localitate>
+            <judet>Suceava</judet>
+            <tara>Romania</tara>
+            <cod_postal>727170</cod_postal>
+        </adresa>
+        <data_nasterii>
+            <zi>5</zi>
+            <luna>Iulie</luna>
+            <an>2002</an>
+        </data_nasterii>
+    </persoana>
+    <persoana id="2">
+        <nume>Birleanu</nume>
+        <prenume>Andreea</prenume>
+        <varsta>24</varsta>
+        <telefon>0730005530</telefon>
+        <email>andreeabirleanu14@gmail.com</email>
+        <adresa>
+            <strada>Florilor</strada>
+            <numar>25</numar>
+            <localitate>Iasi</localitate>
+            <judet>Iasi</judet>
+            <tara>Romania</tara>
+            <cod_postal>700756</cod_postal>
+        </adresa>
+        <data_nasterii>
+            <zi>23</zi>
+            <luna>Septembrie</luna>
+            <an>2000</an>
+        </data_nasterii>
+    </persoana>
+    <persoana id="3">
+        <nume>Puravet</nume>
+        <prenume>Adina</prenume>
+        <varsta>34</varsta>
+        <telefon>0754506323</telefon>
+        <email>puravet_adina@gmail.com</email>
+        <adresa>
+            <strada>Alee Nicolina</strada>
+            <numar>30</numar>
+            <localitate>Bucuresti</localitate>
+            <judet>Ilfov</judet>
+            <tara>Romania</tara>
+            <cod_postal>737170</cod_postal>
+        </adresa>
+        <data_nasterii>
+            <zi>14</zi>
+            <luna>Martie</luna>
+            <an>1995</an>
+        </data_nasterii>
+    </persoana>
+    <persoana id="4">
+        <nume>Stefan</nume>
+        <prenume>Iulian</prenume>
+        <varsta>34</varsta>
+        <telefon>0753608329</telefon>
+        <email>stefaniuliana@gmail.com</email>
+        <adresa>
+            <strada>Piata Unirii</strada>
+            <numar>10</numar>
+            <localitate>Pascani</localitate>
+            <judet>Iasi</judet>
+            <tara>Romania</tara>
+            <cod_postal>747134</cod_postal>
+        </adresa>
+        <data_nasterii>
+            <zi>40</zi>
+            <luna>August</luna>
+            <an>1990</an>
+        </data_nasterii>
+    </persoana>
+    <persoana id="5">
+        <nume>Ionescu</nume>
+        <prenume>Ana</prenume>
+        <varsta>26</varsta>
+        <telefon>0711349876</telefon>
+        <email>anaionescu@gmail.com</email>
+        <adresa>
+            <strada>Bancii</strada>
+            <numar>3</numar>
+            <localitate>Falticeni</localitate>
+            <judet>Suceava</judet>
+            <tara>Romania</tara>
+            <cod_postal>787179</cod_postal>
+        </adresa>
+        <data_nasterii>
+            <zi>27</zi>
+            <luna>Ianuarie</luna>
+            <an>1999</an>
+        </data_nasterii>
+    </persoana>
+</persoane>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ro-RO">
+    <head>
+        <title>Învăț</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/stil.css">
+        <script src="js/script.js" defer></script>
+    </head>
+    <body onload="InitPage()">
+        <header>
+            <img src="Imagini/movie.jpg" width="200" height="200" alt="Movie">
+            <h1>Pasiune pentru filme</h1>
+        </header>
+        <nav>
+            <a href="index.html">Acasă</a>
+            <a href="inregistreaza.html">Înregistrează</a>
+            <a href="video.html">Video</a>
+            <a href="despre.html">Despre</a>
+            <a href="desen.html">Desen</a>
+            <a href="invat.html">Învăț</a>
+        </nav>
+        <aside>
+            <a href="#info">Informații</a>
+            <a href="#draw">Desenează!</a>
+            <a href="#table">Filme recomandate</a>
+        </aside>
+
+        <!-- Sectiunea 1 --------------------------------------------------------------------------------------------->
+        <main>
+            <section id="info">
+                <br>
+                <h1>Informații</h1>
+                <h3>Data și timpul curent:</h3>
+                <p id="dataTimp"></p>
+                <h3>Adresa URL a paginii curente:</h3>
+                <p id="url"></p>
+                <h3>Locația curentă a utilizatorului:</h3>
+                <p id="locatie"></p>
+                <h3>Browser:</h3>
+                <p id="browser"></p>
+                <h3>Sistemul de operare:</h3>
+                <p id="sistemOperare"></p>
+                <br><br>
+            </section>
+
+            <!-- Sectiunea 2 ---------------------------------------------------------------------------------------------------------->
+            <section id="draw">
+                <h1>Desenează!</h1>
+                <label for="fillColor">Selectați culoarea interiorului:</label>
+                <input type="color" id="fillColor" name="fillColor" value="#ee82ee">
+                <br>
+                <label for="strokeColor">Selectați culoarea conturului:</label>
+                <input type="color" id="strokeColor" name="strokeColor" value="#00ced1">
+                <br><br>
+                <button id="delete">Șterge</button><br>
+                <br>
+                <canvas id="myCanvas" width="700" height="400"></canvas>
+                <br><br>
+            </section>
+
+            <!-- Sectiunea 3 ------------------------------------------------------------------------------------------------------------->
+            <section id="table">
+                <h1>Filme recomandate</h1>
+                <p>În această secțiune puteți insera linii/coloane în cadrul tabelului pentru o vizualizare mai buna a conținutului acestuia.</p>
+                <label for="row_column">Introduceți numărul liniei/coloanei:</label>
+                <input type="number" id="row_column">
+                <br>
+                <label for="color">Alegeți culoarea:</label>
+                <input type="color" id="color" value="#f3b7f3">
+                <br><br>
+                <button type="submit" id="add_row">Adăugați linie</button>
+                <button type="submit" id="add_column">Adăugați coloană</button>
+                <br><br>
+                <table id="dynamicTable">
+                    <tr id="first-row">
+                        <td>Titlu</td>
+                        <td>Anul de lansare</td>
+                        <td>Gen</td>
+                        <td>Regizor</td>
+                        <td>Durată (min)</td>
+                    </tr>
+                    <tr>    <!-- rand nou -->
+                        <td>Închisoarea îngerilor</td>    <!-- celula noua -->
+                        <td>1994</td>
+                        <td>Dramă</td>
+                        <td>Frank Darabont</td>
+                        <td>142</td>
+                    </tr>
+                    <tr>
+                        <td>Cavalerul negru</td>
+                        <td>2008</td>
+                        <td>Acțiune</td>
+                        <td>Christopher Nolan</td>
+                        <td>152</td>
+                    </tr>
+                    <tr>
+                        <td>Începutul</td>
+                        <td>2010</td>
+                        <td>SF/Acțiune</td>
+                        <td>Christopher Nolan</td>
+                        <td>148</td>
+                    </tr>
+                    <tr>
+                        <td>Titanic</td>
+                        <td>1997</td>
+                        <td>Romantic</td>
+                        <td>James Cameron</td>
+                        <td>195</td>
+                    </tr>
+                    <tr>
+                        <td>Nașul</td>
+                        <td>1972</td>
+                        <td>Polițist</td>
+                        <td>Francis Ford Coppola</td>
+                        <td>175</td>
+                    </tr>
+                </table>
+            </section>
+        </main>
+        <footer>
+            <p>&copy; 2025. Pasiune pentru filme.</p>
+        </footer>
+    </body>
+</html>

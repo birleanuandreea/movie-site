@@ -320,6 +320,7 @@ fieldset{
 }
 
 
+
 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 /* Pagina Invat.html */
 
@@ -411,4 +412,10 @@ canvas{
     display: block;                   /* face canvas-ul un element block */
     margin: 20px auto;                /* centrarea canvas-ului pe pagina */
 
+}
+
+#first-row{
+    font-size: 1.2em;
+    color:darkred;
+    font-weight: bold;
 }
