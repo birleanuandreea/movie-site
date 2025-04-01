@@ -4,6 +4,7 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     color: #333;
     background-color: aliceblue;
+    font-size: 16px;
 }
 
 header { 
@@ -265,22 +266,115 @@ fieldset{
     header {
       flex-direction: column; 
       align-items: center;
+      text-align: center;
+      padding: 10px 0;
     }
-  
+
+    header h1 {
+        font-size: 1.5em;
+    }
+    
+    .iframe-container {
+        position: relative;
+        width: 100%;
+        padding-bottom: 56.25%; /* Aspect ratio 16:9 */
+        height: 0;
+        overflow: hidden;
+    }
+
+    .iframe-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
     nav {
       text-align: center;
-      padding: 10px;
+      padding: 5px 0;
+      /* padding: 10px; */
     }
   
     nav a {
       display: block; 
       margin-bottom: 5px;
-      font-size: 1em; 
+      font-size: 0.9em;
     }
   
     footer {
       font-size: 12px; 
       padding: 5px;
+    }
+
+    select {
+        width: 200px; /* sau o altă valoare potrivită */
+    }
+
+    
+    /* p {
+        text-align: justify;
+    } */
+
+    #draw canvas {
+        max-width: 100%; /* Limitează lățimea maximă la 100% din container */
+        height: auto; /* Păstrează aspect ratio-ul */
+    }
+
+    #info,  #table, #draw{
+        align-items: center;
+    }
+
+    #info h1, #table h1, #draw h1 {
+        font-size: 1.3rem;
+    }
+
+    #info h3 {
+        font-size: 1.1rem;
+    }
+
+    #info p, #table p {
+        font-size: 1rem;
+    }
+
+
+    #draw button, #table button {
+        font-size: 1rem;
+    }
+
+
+    #table label, #draw label {
+        font-size: 1rem;
+    }
+
+    #table table {
+        display: block; 
+        overflow-x: auto; 
+        white-space: nowrap; 
+    }
+
+    #table th,
+    #table td {
+        white-space: nowrap; 
+    }
+    aside {
+        width: 50px;          
+        max-width: 50px;   
+        margin: 0;            
+        padding: 2px;         
+        font-size: 0.6em;    
+    }
+    
+    
+    aside a {
+        text-align: center;
+        display: block;        
+        font-size: 0.4em;      
+        padding: 2px 0;        
+        margin-bottom: 2px;    
+        white-space: nowrap;   
+        overflow: hidden;      /* Ascunde continutul care depaseste */
+        text-overflow: ellipsis; /* Adauga "..." daca textul depaseste */
     }
   }
   
