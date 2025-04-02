@@ -147,3 +147,22 @@ function Table(){
         }
     });
 }
+
+
+//----------------------------------------------------------------------------------------------
+// functie AJAX apelata in index.html
+function schimbaContinut(resursa){
+    var xhttp = new XMLHttpRequest();
+    xhttp.open('GET', resursa + '.html', true);
+
+    xhttp.onload = function() {
+        if (this.status == 200) {
+            document.getElementById('continut').innerHTML = xhttp.responseText;
+        }
+        else{
+            console.error('Eroare la incarcarea resursei:', xhttp.statusText)
+        }
+    }
+    xhttp.send();
+
+}
