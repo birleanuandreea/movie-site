@@ -151,18 +151,32 @@ function Table(){
 
 //----------------------------------------------------------------------------------------------
 // functie AJAX apelata in index.html
-function schimbaContinut(resursa){
+function schimbaContinut(resursa, jsFisier, jsFunctie){
     var xhttp = new XMLHttpRequest();
-    xhttp.open('GET', resursa + '.html', true);
 
     xhttp.onload = function() {
-        if (this.status == 200) {
-            document.getElementById('continut').innerHTML = xhttp.responseText;
-        }
-        else{
-            console.error('Eroare la incarcarea resursei:', xhttp.statusText)
-        }
-    }
+            document.getElementById('continut').innerHTML = this.responseText;
+            
+            if (jsFisier) { 
+                var elementScript = document.createElement('script'); 
+                elementScript.onload = function () { 
+                    console.log("hello"); 
+                    if (jsFunctie) { 
+                        window[jsFunctie](); 
+                    } 
+                }; 
+                elementScript.src = jsFisier; 
+                document.head.appendChild(elementScript); 
+            } else { 
+                if (jsFunctie) { 
+                    window[jsFunctie](); 
+                } 
+            } 
+
+    };
+
+    history.replaceState(null, document.title, window.location.pathname + window.location.search); // removing the #sectionID from URL
+    xhttp.open('GET', resursa + '.html', true);
     xhttp.send();
 
 }
