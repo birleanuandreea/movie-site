@@ -5,11 +5,14 @@ body{
     color: #333;
     background-color: aliceblue;
     font-size: 16px;
+    margin: 0;
+    padding: 0;
 }
 
 header { 
     display: flex; 
-    align-items: center;
+    flex-direction: row;    /* aliniate orizonal pe axa principala */
+    align-items: center;    /* aliniate central pe axa transversala */
     background-color:#407ecf;
 }
 
@@ -18,7 +21,7 @@ header img {
 }
 
 header h1 {
-    font-family:'Courier New', Courier, monospace;
+    font-family:'Courier New';
     font-style: italic;
     font-size: 60px; 
     color:#e1e6ed;
@@ -28,44 +31,31 @@ nav{
     background-color: #3a7ef2;
     text-align: left;
     padding: 15px;
+    font-size: 1.2em;
 }
 
 nav a{
     padding: 8px 16px;
     margin-right: 10px;
-    font-size: large;
     text-decoration: none;
     color: white;
-    font-family:Arial, Helvetica, sans-serif;
     font-size: 1.2em;
 }
 
 nav a:hover{
-    background-color: #333;
+    background-color: pink;
+    color: #407ecf;
     text-decoration: underline;
     font-size: 1.5em;
-}
-
-main ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-main ul li {
-    padding: 10px; 
-    font-size: 1.1em; 
-    line-height: 1.6; 
-}
-
-main ul li b {
-    color: #407ecf;
+    font-weight: bold;
 }
 
 footer{
+    display: flex;
+    flex-direction: column;     /* aliniere pe verticala */
+    align-items: center;        /* aliniere pe orizonatala */
     background-color: #407ecf; 
     color: white; 
-    text-align: center; 
     padding: 5px; 
     font-family: Arial, sans-serif; 
     font-size: 1.2em; 
@@ -74,23 +64,80 @@ footer{
 
 
 
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* personalizare continut acasa.html */
+#acasa h2{
+    font-size: 2em;
+    padding-left: 20px;
+    color: #407ecf;
+}
+#acasa p{
+    padding-left: 10px;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+ul li{
+    padding: 10px; 
+    font-size: 1.1em;
+}
+
+ul li b {
+    font-size: 1.2em;
+    color: #407ecf;
+}
+li b:hover{
+    background-color: pink;
+    padding: 5px;
+}
+
+
 
 
 
 /* ------------------------------------------------------------------------------------------------------------------------------------- */
 /* personalizarea tabelului din pagina despre.html */
 table{
-    border: 1px solid black;
-
+    /* border: 1px solid black; */
+    border-collapse: collapse;
+    background-color: beige;
 }
-
 td{
-    border: 1px solid black;
+    border: 2px solid black;
     padding: 8px;
-    height: 30px;
-    width: 100px;   
+    text-align: center;
+    width: 100px;
+    height: 50px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+#s2{
+    font-size: 1.1em;
+    padding-top: 10px;
 }
 
+#s1, #s3, #s4{
+    font-size: 1.1em;
+    padding: 2px;
+}
+#s1 a, #s3 a{
+    white-space: nowrap;
+}
+#p1{
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-size: 1.3em;
+}
+ol li{
+    padding: 2px;
+}
+
+
+
+
+/* ----------------------------------------------------------------------------------------------------------------------------------------------- */
+/* personalizare formular din pagina inregistreaza.html */
 input::placeholder{
     color:#3a7ef2;
     opacity: 0.5;
@@ -134,6 +181,7 @@ button{
 }
 button:hover {
     background-color: #20608B;
+    font-size: large;
 }
 
 fieldset{
@@ -144,13 +192,18 @@ fieldset{
 
 
 
-/* ------------------------------------------------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 /* 5 elemente specifice CSS3 aplicate paginii despre.html*/
 
 /* Gradients */
 #grad{
     height: 50px;
-    background-image: linear-gradient(white, blue);
+    background-image: linear-gradient(white, #3a7ef2);
+    padding: 10px;
+    text-align: center;
+    font-size: 2em;
+    color: black;
 }
 
 /* Rounded Corners */
@@ -161,8 +214,9 @@ fieldset{
     border: 2px solid #3a7ef2;
     padding: 20px; 
     width: 100px;
-    height: 20px;
+    height: 50px;
     text-align: center;
+    padding-bottom: 3px;
 }
 
 /* Text Overflow */
@@ -172,10 +226,13 @@ fieldset{
     border: 2px solid #3a7ef2;
     overflow: hidden;
     text-overflow: ellipsis;
+    padding: 2px;
 }
 
 .textEffect:hover{
     overflow: visible;
+    white-space: wrap; 
+    text-align: center;
 }
 
 /* Transition + Transformation */
@@ -191,15 +248,19 @@ fieldset{
     height: 30px;
     background-color: red;
     animation-name: example;
-    animation-duration: 4s;
-    font-size: 1.8em;
+    animation-duration: 5s;
+    font-size: 1.5em;
     color: black;
+    padding: 10px;
+    text-align: left;
   }
   
   @keyframes example {
     from {background-color: red;}
     to {background-color: yellow;}
   }
+
+
 
 
 
@@ -282,7 +343,7 @@ fieldset{
         overflow: hidden;
     }
 
-    .iframe-container iframe {
+    .container iframe {
         position: absolute;
         top: 0;
         left: 0;
@@ -381,11 +442,12 @@ fieldset{
 
 
 /* ------------------------------------------------------------------------------------------------------------ */
-/* Galeria video */
+/* Galeria video din video.html */
 .gallery {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-wrap: wrap;            /* permite impartirea elementelor pe mai multe linii */
+    flex-direction: row;        /* aliniere pe orizonatala */
+    justify-content: center;    /* aliniere centrata pe verticala */ 
 }
 
 .gallery iframe {
@@ -417,8 +479,6 @@ fieldset{
 
 /*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 /* Pagina Invat.html */
-
-
 /* Aside */
 aside {
     width: 500px;                  /* latimea pentru aside */
@@ -427,9 +487,9 @@ aside {
     border-radius: 10px;           
     font-family: Arial, sans-serif; 
     position: fixed;                /* fixare aside pe pagina */
-    top: 300px;                     /* margine sus */
+    margin-top: 2px;                     /* margine sus */
     right: 20px;                    /* margine dreapta */
-    border: 2px solid #3a7ef2;               
+    border: 2px solid #3a7ef2;           
 }
 
 
@@ -448,7 +508,7 @@ aside a:hover {
     background-color: #ee82ee;     /* culoare de fundal la hover */
     color: white;                  /* culoare text la hover */
     border-radius: 5px;            /* colturi rotunjite la hover */
-    padding-left: 15px;            /* adaugare spatiu la stanga la hover */
+    padding: 15px;            /* adaugare spatiu la stanga la hover */
 }
 
 canvas{

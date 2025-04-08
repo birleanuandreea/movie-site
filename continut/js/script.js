@@ -1,8 +1,14 @@
 // --------------------------------------------------------------------------------------------------------------------------------------------
 // Initializarea paginii invat.html
 function InitPage(){
-    setInterval(dateTime, 1000);
-    showAll();
+    
+    setInterval( () => {
+        const data = new Date();
+        document.getElementById("dataTimp").innerHTML = data;
+    }, 1000);
+
+    //setInterval(dateTime, 1000);
+    showInfo();
     InitCanvas();
     Table();
 }
@@ -10,10 +16,15 @@ function InitPage(){
 // ---------------------------------------------------------------------------------------------------------------------------
 // Informatii depre pagina
 // adresa URL,  numele și versiunia browser-ului, sistemul de operare
-function showAll(){
+function showInfo(){
     document.getElementById('url').innerHTML = window.location.href;
 
-    window.navigator.geolocation.getCurrentPosition(showPosition);
+    if(navigator.geolocation){
+        window.navigator.geolocation.getCurrentPosition(showPosition);
+    }else{
+        document.getElementById("locatie").innerHTML = "Geolocation nu este suportat de acest browser.";
+    }
+    
     document.getElementById('browser').innerHTML = window.navigator.userAgent.replace(/ *\([^)]*\)*/g, "");
     document.getElementById('sistemOperare').innerHTML = /\(([^)]+)\)/.exec(window.navigator.userAgent)[1];
 }
@@ -25,8 +36,8 @@ function dateTime(){
 // locatia curenta
 function showPosition(position){
     document.getElementById("locatie").innerHTML = 
-    "Latitudine: " + position.coords.latitude + "<br>" +
-    "Longitudine: " + position.coords.longitude;
+    "Latitudine: " + Math.round(position.coords.latitude * 100)/100 + "<br>" +
+    "Longitudine: " + Math.round(position.coords.longitude * 100)/100;
  }
 
 
@@ -108,11 +119,11 @@ function Table(){
             const no_columns = dynamicTable.rows[0].cells.length;
             const row = dynamicTable.insertRow(index);
 
-            for(let i =0; i < no_columns; i++){
+            for(let i = 0; i < no_columns; i++){
                 let cell = row.insertCell(i);
                 cell.style.backgroundColor = color;
                 cell.classList.add('row-delimiter');
-                cell.contentEditable = true;
+                //cell.contentEditable = true;
             }
         }
         catch(error){
@@ -139,7 +150,7 @@ function Table(){
                 let cell = dynamicTable.rows[i].insertCell(index);
                 cell.style.backgroundColor = color;
                 cell.classList.add('column-delimiter');
-                cell.contentEditable = true;
+                //cell.contentEditable = true;
             }
         }
         catch(error){
@@ -149,13 +160,15 @@ function Table(){
 }
 
 
-//----------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------
 // functie AJAX apelata in index.html
 function schimbaContinut(resursa, jsFisier, jsFunctie){
     var xhttp = new XMLHttpRequest();
 
-    xhttp.onload = function() {
-            document.getElementById('continut').innerHTML = this.responseText;
+    xhttp.onreadystatechange = function() {
+        if (xhttp.readyState == 4 && xhttp.status == 200)
+        {
+            document.getElementById('continut').innerHTML = xhttp.responseText;
             
             if (jsFisier) { 
                 var elementScript = document.createElement('script'); 
@@ -173,10 +186,84 @@ function schimbaContinut(resursa, jsFisier, jsFunctie){
                 } 
             } 
 
+        }
+           
     };
 
-    history.replaceState(null, document.title, window.location.pathname + window.location.search); // removing the #sectionID from URL
+    //history.replaceState(null, document.title, window.location.pathname + window.location.search); // removing the #sectionID from URL
     xhttp.open('GET', resursa + '.html', true);
     xhttp.send();
 
 }
+
+
+// ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// functia AJAX apelata in verificare.html
+async function verificaUtilizator(){
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    try{
+        const response = await fetch("resurse/utilizatori.json");
+
+        if(response.status === 200){
+            const text = await response.text();
+            const users = JSON.parse(text);
+
+            const ok = users.find(user => {
+                return user.utilizator === username && user.parola === password
+            });
+
+            if(ok){
+                document.getElementById("auth").innerHTML = "Autentificare reusita";
+            }else{
+                document.getElementById("auth").innerHTML = "Eroare la autentificare";
+            }
+        }else{
+            throw new Error("Eroare la incarcarea fisierului");
+        }
+    }catch(error){
+        alert(error);
+    }
+}
+
+// functie pentru inregistrarea utilizatorului in formular
+function inregistrareFormular() {
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('registrationForm');
+        
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();  // Prevent the default form submission
+            
+            // Collect form data
+            const formData = new FormData(form);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+            
+            // Send AJAX request
+            fetch('/api/utilizatori', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams(data),
+            })
+            .then(response => response.json())
+            .then(result => {
+                // Just reset the form on success without status message
+                if (result.status === 'success' || result.success) {
+                    form.reset();  // Reset the form to clear inputs
+                    console.log('User registered successfully');
+                } else {
+                    console.log('Error registering user:', result.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    });
+}
+inregistrareFormular();

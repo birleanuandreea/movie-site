@@ -1,0 +1,22 @@
+[
+    {
+        "utilizator": "test",
+        "parola": "test"
+    },
+    {
+        "nume_utilizator": "maria ana",
+        "parola": "dfrdz",
+        "nume": "A",
+        "prenume": "A",
+        "email": "andreea.birleanu@student.tuaisi.ro",
+        "telefon": "0747116566",
+        "sex": "masculin",
+        "gen": "actiune",
+        "culoare": "#000000",
+        "data": "2025-04-04",
+        "ora": "21:56",
+        "varsta": "18",
+        "adresa": "http://isip.go.ro/LFT/",
+        "descriere": "egfrdzgrdz"
+    }
+]
