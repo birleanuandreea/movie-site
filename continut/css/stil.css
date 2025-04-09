@@ -137,7 +137,8 @@ ol li{
 
 
 /* ----------------------------------------------------------------------------------------------------------------------------------------------- */
-/* personalizare formular din pagina inregistreaza.html */
+/* personalizare 
+ular din pagina inregistreaza.html */
 input::placeholder{
     color:#3a7ef2;
     opacity: 0.5;
@@ -572,4 +573,174 @@ canvas{
     font-size: 1.2em;
     color:darkred;
     font-weight: bold;
+}
+
+
+
+/* personalizare pagina verofica.html */
+/* Stil pentru articolul cu clasa .user-auth */
+.user-auth {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    margin: 10px auto;
+}
+
+/* Stil pentru etichete */
+.user-auth label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Stil pentru campuri de input */
+.user-auth input[type="text"], .user-auth input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Stil pentru butonul de submit */
+.user-auth input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.user-auth input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Stil pentru mesajul de autentificare */
+.user-auth #auth {
+    margin-top: 10px;
+    font-size: 14px;
+    color: red;
+}
+
+
+/* personalizare pagina cumparaturi.html */
+/* Main container styling */
+.cumparaturi {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+/* Heading styles */
+.cumparaturi h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 28px;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+}
+
+/* Form styling */
+.cumparaturi form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 25px;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 6px;
+}
+
+/* Input fields */
+.cumparaturi input {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.cumparaturi input:focus {
+    /* outline: none; */
+    border-color: #3498db;
+}
+
+/* Button styling */
+.cumparaturi button {
+    padding: 12px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.cumparaturi button:hover {
+    background-color: #2980b9;
+}
+
+/* .cumparaturi button:active {
+    transform: translateY(1px);
+} */
+
+/* Table styling */
+.cumparaturi table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 6px;
+}
+
+.cumparaturi th {
+    background-color: #3498db;
+    color: white;
+    text-align: left;
+    padding: 12px 15px;
+    font-weight: bold;
+}
+
+.cumparaturi td{
+    padding: 12px 15px;
+}
+
+.cumparaturi tr:nth-child(even) {
+    background-color: #f5f5f5;
+}
+
+.cumparaturi tr:hover {
+    background-color: #f0f7fc;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .cumparaturi form {
+        flex-direction: column;
+    }
+    
+    .cumparaturi input, 
+    .cumparaturi button {
+        width: 100%;
+    }
+    
+    .cumparaturi table {
+        font-size: 14px;
+    }
+    
+    .cumparaturi th, 
+    .cumparaturi td {
+        padding: 8px 10px;
+    }
 }
