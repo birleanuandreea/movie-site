@@ -1,32 +1,9 @@
 import socket
-import os
-import json
+import os # pentru dimensiunea fisierului
+import gzip
 import threading
-from urllib.parse import parse_qs
+import json
 
-# salveaza datele unui utilizator intr-un fisier JSON
-def save_user(user_data):
-    users_file_path = '../continut/resurse/utilizatori.json'
-    
-    # incarca utilizatorii existenti
-    existing_users = []
-    if os.path.exists(users_file_path):
-        try:
-            with open(users_file_path, 'r', encoding="utf-8") as f:
-                existing_users = json.load(f)
-        except json.JSONDecodeError:
-            # daca exista dar nu are format JSON valid => o lista goala
-            existing_users = []
-
-    existing_users.append(user_data)
-    
-    # Create directories if they don't exist
-    # os.makedirs(os.path.dirname(users_file_path), exist_ok=True)
-    
-    with open(users_file_path, 'w', encoding="utf-8") as f:
-        json.dump(existing_users, f, indent=4, ensure_ascii=False)
-    
-    return True
 
 def inregistrare_client(clientsocket, address):
     print('S-a conectat un client.')
@@ -45,7 +22,7 @@ def inregistrare_client(clientsocket, address):
                 linieDeStart = cerere[0:pozitie]
                 print('S-a citit linia de start din cerere: ##### ' + linieDeStart + ' #####')
                 break
-        print('S-a terminat citirea.')
+        print('S-a terminat cititrea.')
         if linieDeStart == '':
             clientsocket.close()
             print('S-a terminat comunicarea cu clientul - nu s-a primit niciun mesaj.')
@@ -56,18 +33,21 @@ def inregistrare_client(clientsocket, address):
         tipCerere = elementeLineDeStart[0]
         numeResursaCeruta = elementeLineDeStart[1]
 
-        # Tratarea cererii GET
         if tipCerere == 'GET':
             if numeResursaCeruta == '/':
-                numeResursaCeruta = '/inregistreaza.html'
+                numeResursaCeruta = '/index.html'
 
+            # calea este relativa la directorul de unde a fost executat scriptul
             numeFisier = '../continut' + numeResursaCeruta
 
             fisier = None
             try:
+                # deschide fisierul pentru citire in mod binar
                 fisier = open(numeFisier, 'rb')
                 buf = fisier.read()
+                compressed_buf = gzip.compress(buf)
 
+                # tip media
                 numeExtensie = numeFisier[numeFisier.rfind('.') + 1:]
                 tipuriMedia = {
                     'html': 'text/html; charset=utf-8',
@@ -83,13 +63,16 @@ def inregistrare_client(clientsocket, address):
                 }
                 tipMedia = tipuriMedia.get(numeExtensie, 'text/plain; charset=utf-8')
 
+                # se trimite raspunsul
                 clientsocket.sendall(b'HTTP/1.1 200 OK\r\n')
-                clientsocket.sendall(('Content-Length: ' + str(len(buf)) + '\r\n').encode())
+                clientsocket.sendall(('Content-Length: ' + str(len(compressed_buf)) + '\r\n').encode())
                 clientsocket.sendall(('Content-Type: ' + tipMedia + '\r\n').encode())
                 clientsocket.sendall(b'Server: My PW Server\r\n')
+                clientsocket.sendall(b'Content-Encoding: gzip\r\n')
                 clientsocket.sendall(b'\r\n')
-                clientsocket.sendall(buf)
+                clientsocket.sendall(compressed_buf)
             except IOError:
+                # daca fisierul nu exista trebuie trimis un mesaj de 404 Not Found
                 msg = 'Eroare! Resursa ceruta ' + numeResursaCeruta + ' nu a putut fi gasita!'
                 print(msg)
                 clientsocket.sendall(b'HTTP/1.1 404 Not Found\r\n')
@@ -101,61 +84,81 @@ def inregistrare_client(clientsocket, address):
             finally:
                 if fisier is not None:
                     fisier.close()
-
-        # Tratarea cererii POST pentru /api/utilizatori
-        if numeResursaCeruta == '/api/utilizatori' and tipCerere == 'POST':
-            while '\r\n\r\n' not in cerere:
-                buf = clientsocket.recv(1024)
-                if not buf:
-                    break
-                cerere += buf.decode()
-
-            headers, body = cerere.split('\r\n\r\n', 1)
-
-            content_length = 0
-            for header in headers.split('\r\n'):
-                if header.lower().startswith('content-length:'):
-                    content_length = int(header.split(':', 1)[1].strip())
-                    break
-
-            while len(body.encode('utf-8')) < content_length:
-                more = clientsocket.recv(1024)
-                if not more:
-                    break
-                body += more.decode()
+        
+        elif tipCerere == 'POST' and numeResursaCeruta == '/api/utilizatori':
+            content_length_start = cerere.find('Content-Length: ')
+            content_length_end = cerere.find('\r\n', content_length_start)
+            content_length = int(cerere[content_length_start + 16:content_length_end])
+                
+            # incepe body-ul cererii (dupa \r\n\r\n)
+            body_start = cerere.find('\r\n\r\n') + 4
+            request_body = cerere[body_start:body_start + content_length]
 
             try:
-                form_data = parse_qs(body)
-                user_data = {k: v[0] for k, v in form_data.items()}
-
-                success = save_user(user_data)
-
-                if success:
-                    response = 'HTTP/1.1 303 See Other\r\nLocation: /index.html\r\n\r\n'
-                else:
-                    response = 'HTTP/1.1 400 Bad Request\r\nContent-Type: application/json\r\n\r\n' \
-                               '{"status": "error", "message": "Error saving user data"}\r\n'
-                clientsocket.sendall(response.encode('utf-8'))
-            except json.JSONDecodeError:
-                # date invalide
-                response = 'HTTP/1.1 400 Bad Request\r\nContent-Type: application/json\r\n\r\n' \
-                           '{"status": "error", "message": "Invalid JSON data"}\r\n'
-                clientsocket.sendall(response.encode('utf-8'))
+                user_data = json.loads(request_body)
+                    
+                json_file_path = '../continut/resurse/utilizatori.json'
+                users = []
+                    
+                if os.path.exists(json_file_path):
+                    with open(json_file_path, 'r') as f:
+                        try:
+                            users = json.load(f)
+                        except json.JSONDecodeError:
+                            users = []
+                    
+                
+                users.append(user_data)
+                    
+                
+                with open(json_file_path, 'w') as f:
+                    json.dump(users, f, indent=4)
+                    
+                
+                response = "Utilizator înregistrat cu succes!"
+                clientsocket.sendall(b'HTTP/1.1 200 OK\r\n')
+                clientsocket.sendall(('Content-Length: ' + str(len(response)) + '\r\n').encode())
+                clientsocket.sendall(b'Content-Type: text/plain; charset=utf-8\r\n')
+                clientsocket.sendall(b'Server: My PW Server\r\n')
+                clientsocket.sendall(b'\r\n')
+                clientsocket.sendall(response.encode())
+                    
+            except json.JSONDecodeError as e:
+                    # Eroare la parsarea JSON
+                error_msg = f"Eroare la parsarea JSON: {str(e)}"
+                clientsocket.sendall(b'HTTP/1.1 400 Bad Request\r\n')
+                clientsocket.sendall(('Content-Length: ' + str(len(error_msg)) + '\r\n').encode())
+                clientsocket.sendall(b'Content-Type: text/plain; charset=utf-8\r\n')
+                clientsocket.sendall(b'Server: My PW Server\r\n')
+                clientsocket.sendall(b'\r\n')
+                clientsocket.sendall(error_msg.encode())
+                
+            except Exception as e:
+                    # Alte erori
+                error_msg = f"Eroare la procesarea cererii: {str(e)}"
+                clientsocket.sendall(b'HTTP/1.1 500 Internal Server Error\r\n')
+                clientsocket.sendall(('Content-Length: ' + str(len(error_msg)) + '\r\n').encode())
+                clientsocket.sendall(b'Content-Type: text/plain; charset=utf-8\r\n')
+                clientsocket.sendall(b'Server: My PW Server\r\n')
+                clientsocket.sendall(b'\r\n')
+                clientsocket.sendall(error_msg.encode())
 
     finally:
         clientsocket.close()
         print('S-a terminat comunicarea cu clientul.')
 
+         
 # creeaza un server socket
 serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 # specifica ca serverul va rula pe portul 5678, accesibil de pe orice ip al serverului
 serversocket.bind(('', 5678))
 # serverul poate accepta conexiuni; specifica cati clienti pot astepta la coada
 serversocket.listen(5)
-
+     
 print('#########################################################################')
 print('Serverul asculta potentiali clienti.')
 # asteapta conectarea unui client la server
+
 while True:
     # metoda `accept` este blocanta => clientsocket, care reprezinta socket-ul corespunzator clientului conectat
     (clientsocket, address) = serversocket.accept()

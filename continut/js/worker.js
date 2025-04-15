@@ -1,13 +1,4 @@
-self.addEventListener('message', function (event) {
-    
-    const nume = event.data.nume;
-    const cantitate = event.data.cantitate;
-    const id = event.data.id;
-
-
-    console.log(`Received message from main script: ID: ${id} Nume: ${nume}, Cantitate: ${cantitate}`);
-
-    
-    self.postMessage(event.data);
-});
-
+self.onmessage = function(e) {
+    console.log("Worker a fost notificat:", e.data);
+    self.postMessage("Worker confirma primirea: " + e.data);
+};

@@ -4,19 +4,35 @@
         "parola": "test"
     },
     {
-        "nume_utilizator": "maria ana",
-        "parola": "dfrdz",
-        "nume": "A",
-        "prenume": "A",
-        "email": "andreea.birleanu@student.tuaisi.ro",
+        "utilizator": "ana",
+        "parola": "ana",
+        "nume": "Ionescu",
+        "prenume": "Ana",
+        "email": "anaio@gmail.com",
         "telefon": "0747116566",
+        "sex": "feminin",
+        "gen": "drama",
+        "culoare": "#b749df",
+        "data": "2008-01-09",
+        "ora": "01:33",
+        "varsta": "31",
+        "adresa": "https://fillmenetworks.com/",
+        "descriere": "frumos"
+    },
+    {
+        "utilizator": "dani",
+        "parola": "dani",
+        "nume": "Popescu",
+        "prenume": "Daniel",
+        "email": "popescu@gmail.com",
+        "telefon": "0730005530",
         "sex": "masculin",
-        "gen": "actiune",
-        "culoare": "#000000",
-        "data": "2025-04-04",
-        "ora": "21:56",
-        "varsta": "18",
-        "adresa": "http://isip.go.ro/LFT/",
-        "descriere": "egfrdzgrdz"
+        "gen": "politist",
+        "culoare": "#36ee11",
+        "data": "2004-05-11",
+        "ora": "22:35",
+        "varsta": "60",
+        "adresa": "https://www.cartepedia.ro/autor/agatha-christie-105499?srsltid=AfmBOor3mIqRn-9gSo4Qn8IpLB6ifEwT2H6136VefnGULbZXLwX1nUc1",
+        "descriere": "minunat"
     }
 ]

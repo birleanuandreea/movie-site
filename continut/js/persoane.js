@@ -8,9 +8,11 @@ function getData(tag, parent){
 function incarcaPersoane(){
     var xhttp = new XMLHttpRequest();
     xhttp.open('GET', '/resurse/persoane.xml');
+    xhttp.send();
 
-    xhttp.onload = function () {
-        if (xhttp.status === 200) {
+    xhttp.onreadystatechange = function () {
+        if (xhttp.readyState == 4){
+            if(xhttp.status == 200) {
             const xmlDoc = xhttp.responseXML;
             const persons = xmlDoc.getElementsByTagName("persoana");
             const section = document.getElementById('tabelPersoane');
@@ -29,7 +31,7 @@ function incarcaPersoane(){
                 firstRow.appendChild(th);
             });
 
-            // creare randuri tabelului cu date
+            // creare randurilor tabelului cu date
             for(let i = 0; i < persons.length; i++){
                 const person = persons[i];
                 const row = table.insertRow(i+1);
@@ -60,6 +62,7 @@ function incarcaPersoane(){
                     border-collapse: collapse;
                     width: 100%;
                     margin-top: 20px;
+                    white-space: nowrap; 
                 }
 
                 .tabel-persoane th, .tabel-persoane td {
@@ -78,16 +81,16 @@ function incarcaPersoane(){
                 .tabel-persoane tr:nth-child(even) {
                     background-color: #f2f2f2;
                 }
+
             `;
             document.head.appendChild(style);
 
             // afisarea tabelului in pagina
             section.innerHTML = ''; // sterge continutul initial
             section.appendChild(table);
-        } else {
-            alert('Eroare la incarcarea fisierului XML');
+            } else {
+                alert('Eroare la incarcarea fisierului XML');
+            }
         }
     };
-
-    xhttp.send();
 }

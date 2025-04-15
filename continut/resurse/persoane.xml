@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- validare cu DTD -->
+<!DOCTYPE persoane SYSTEM "validare_persoane.dtd">
 <persoane>
     <persoana id="1">
         <nume>Popescu</nume>

@@ -4,10 +4,12 @@ function InitPage(){
     
     setInterval( () => {
         const data = new Date();
-        document.getElementById("dataTimp").innerHTML = data;
+        const dataTimpElement = document.getElementById("dataTimp");
+        if (dataTimpElement) {
+            dataTimpElement.innerHTML = data;
+        }
     }, 1000);
 
-    //setInterval(dateTime, 1000);
     showInfo();
     InitCanvas();
     Table();
@@ -15,7 +17,6 @@ function InitPage(){
 
 // ---------------------------------------------------------------------------------------------------------------------------
 // Informatii depre pagina
-// adresa URL,  numele și versiunia browser-ului, sistemul de operare
 function showInfo(){
     document.getElementById('url').innerHTML = window.location.href;
 
@@ -28,12 +29,7 @@ function showInfo(){
     document.getElementById('browser').innerHTML = window.navigator.userAgent.replace(/ *\([^)]*\)*/g, "");
     document.getElementById('sistemOperare').innerHTML = /\(([^)]+)\)/.exec(window.navigator.userAgent)[1];
 }
-// data si timpul curent
-function dateTime(){
-    const now = new Date();
-    document.getElementById('dataTimp').innerHTML = now;
-}
-// locatia curenta
+
 function showPosition(position){
     document.getElementById("locatie").innerHTML = 
     "Latitudine: " + Math.round(position.coords.latitude * 100)/100 + "<br>" +
@@ -44,7 +40,6 @@ function showPosition(position){
 //----------------------------------------------------------------------------------------------------------------------------------------------
 // Canvas
 function InitCanvas() {
-    // obtinerea elementelor necesare
     const canvas = document.getElementById('myCanvas');
     const ctx = canvas.getContext("2d");    // To draw in the canvas you need to create a 2D context object
     const strokeColorPicker = document.getElementById('strokeColor');
@@ -53,7 +48,7 @@ function InitCanvas() {
     let startX = null;
     let startY = null;
     
-    // desenarea imaginii pe canvas dupa ce este incarcata
+
     let img = new Image(); 
     img.src = 'Imagini/scene.png';
     img.onload = function() {
@@ -78,20 +73,18 @@ function InitCanvas() {
             ctx.strokeStyle = strokeColorPicker.value;
             ctx.fillStyle = fillColorPicker.value;
             
-            // desenarea dreptunghiului
+
             ctx.beginPath();
             ctx.rect(startX, startY, width, height);
             ctx.fill();
             ctx.stroke();
 
-            // resetare
+
             startX = null;
             startY = null;
         }
     });
 
-
-    // la apasarea butonului se va curata canvas-ul si se va reincarca img
     document.getElementById('delete').addEventListener("click", function() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height); 
@@ -122,8 +115,7 @@ function Table(){
             for(let i = 0; i < no_columns; i++){
                 let cell = row.insertCell(i);
                 cell.style.backgroundColor = color;
-                cell.classList.add('row-delimiter');
-                //cell.contentEditable = true;
+                cell.style.height = "15px";
             }
         }
         catch(error){
@@ -146,11 +138,10 @@ function Table(){
                 throw new Error('Index-ul coloanei este invalid');
             }
 
-            for(let i =0; i < no_rows; i++){
+            for(let i = 0; i < no_rows; i++){
                 let cell = dynamicTable.rows[i].insertCell(index);
                 cell.style.backgroundColor = color;
-                cell.classList.add('column-delimiter');
-                //cell.contentEditable = true;
+                cell.style.width = "50px";
             }
         }
         catch(error){
@@ -162,38 +153,38 @@ function Table(){
 
 //-----------------------------------------------------------------------------------------------------------------------
 // functie AJAX apelata in index.html
-function schimbaContinut(resursa, jsFisier, jsFunctie){
+function schimbaContinut(resursa, jsFisier, jsFunctie) {
     var xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function() {
-        if (xhttp.readyState == 4 && xhttp.status == 200)
-        {
+        if (xhttp.readyState == 4 && xhttp.status == 200) {
             document.getElementById('continut').innerHTML = xhttp.responseText;
-            
-            if (jsFisier) { 
-                var elementScript = document.createElement('script'); 
-                elementScript.onload = function () { 
-                    console.log("hello"); 
-                    if (jsFunctie) { 
-                        window[jsFunctie](); 
-                    } 
-                }; 
-                elementScript.src = jsFisier; 
-                document.head.appendChild(elementScript); 
-            } else { 
-                if (jsFunctie) { 
-                    window[jsFunctie](); 
-                } 
-            } 
 
+            if (jsFisier) {
+                if (!document.querySelector(`script[src="${jsFisier}"]`)) {
+                    var elementScript = document.createElement('script');
+                    elementScript.onload = function() {
+                        console.log("Script incarcat");
+                        if (jsFunctie) {
+                            window[jsFunctie]();
+                        }
+                    };
+                    elementScript.src = jsFisier;
+                    document.head.appendChild(elementScript);
+                } else {
+                    if (jsFunctie) {
+                        window[jsFunctie]();
+                    }
+                }
+            } else {
+                if (jsFunctie) {
+                    window[jsFunctie]();
+                }
+            }
         }
-           
     };
-
-    //history.replaceState(null, document.title, window.location.pathname + window.location.search); // removing the #sectionID from URL
     xhttp.open('GET', resursa + '.html', true);
     xhttp.send();
-
 }
 
 
@@ -227,43 +218,57 @@ async function verificaUtilizator(){
     }
 }
 
-// functie pentru inregistrarea utilizatorului in formular
-function inregistrareFormular() {
-    document.addEventListener('DOMContentLoaded', function() {
-        const form = document.getElementById('registrationForm');
-        
-        form.addEventListener('submit', function(event) {
-            event.preventDefault();  // Prevent the default form submission
-            
-            // Collect form data
-            const formData = new FormData(form);
-            const data = {};
-            formData.forEach((value, key) => {
-                data[key] = value;
-            });
-            
-            // Send AJAX request
-            fetch('/api/utilizatori', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: new URLSearchParams(data),
-            })
-            .then(response => response.json())
-            .then(result => {
-                // Just reset the form on success without status message
-                if (result.status === 'success' || result.success) {
-                    form.reset();  // Reset the form to clear inputs
-                    console.log('User registered successfully');
-                } else {
-                    console.log('Error registering user:', result.message);
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        });
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// functie pentru inregistrarea in formular
+function inregistreaza() {
+
+    let p = document.getElementById("mesaj");
+    p.innerHTML = "";
+
+    let f = document.getElementById("registrationForm");
+
+    if (!f.checkValidity()) {
+        p.innerHTML = "Vă rugăm să completați toate câmpurile formularului.";
+        p.style.color = "red";
+        return;
+    }
+
+    const data = {
+        utilizator: document.getElementById("utilizator").value,
+        parola: document.getElementById("parola").value,
+        nume: document.getElementById("nume").value,
+        prenume: document.getElementById("prenume").value,
+        email: document.getElementById("email").value,
+        telefon: document.getElementById("telefon").value,
+        sex: document.getElementById("sex").value,
+        gen: document.getElementById("gen").value,
+        culoare: document.getElementById("culoare").value,
+        data: document.getElementById("data").value,
+        ora: document.getElementById("ora").value,
+        varsta: document.getElementById("varsta").value,
+        adresa: document.getElementById("adresa").value,
+        descriere: document.getElementById("descriere").value
+    };
+
+    fetch('/api/utilizatori', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        if (!response.ok) {
+            p.innerHTML = "Eroare la înregistrare!";
+            p.style.color = "red";
+            throw new Error("Eroare la inregistrare");
+        }
+        return response.text();
+    })
+    .then(data => {
+        p.innerHTML = data;
+        p.style.color = "green";
+        f.reset();
+    })
+    .catch(error => {
+        console.error(error);
     });
 }
-inregistrareFormular();

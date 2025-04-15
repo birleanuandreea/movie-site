@@ -1,8 +1,8 @@
 
-        <svg width="500" height="500" xmlns="http://www.w3.org/2000/svg">
+        <svg width="500" height="500">
             <defs>
-                <!-- Gradient pentru cutia de popcorn -->
-                <linearGradient id="gradPopcorn" x1="0%" y1="0%" x2="0%" y2="100%">
+                <!-- Gradient pentru cutia de popcorn(de la rosu la rosu inchis) -->
+                <linearGradient id="gradPopcorn" x1="0%" y1="0%" x2="0%" y2="100%">     <!--de sus in jos -->
                     <stop offset="0%" stop-color="red"/>
                     <stop offset="100%" stop-color="darkred"/>
                 </linearGradient>
@@ -11,7 +11,7 @@
             <!-- Clapperboard -->
             <rect x="50" y="40" width="200" height="40" fill="black"/>
 
-            <!-- Linii diagonale pe clapperboard -->
+            <!-- Linii verticale pe clapperboard -->
             <rect x="50" y="40" width="40" height="40" fill="white"/>
             <rect x="90" y="40" width="40" height="40" fill="black"/>
             <rect x="130" y="40" width="40" height="40" fill="white"/>
@@ -32,9 +32,9 @@
             <circle cx="190" cy="190" r="15" fill="yellow"/>
 
             <!-- Tranzitie text -->
-            <g transform="translate(100,100)">
-                <text id="TextElement" x="100" y="100" style="font-family:Verdana;font-size:24">It's movie time!
-                <animateMotion path="M 0 0 L 100 100" dur="5s" fill="freeze" />
+            <g transform="translate(150,150)">
+                <text x="100" y="100" style="font-family:Verdana;font-size:24">It's movie time!
+                    <animateMotion path="M 0 0 L 300 300" dur="5s" repeatCount="indefinite" />
                 </text>
             </g>
         </svg>

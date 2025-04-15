@@ -1,7 +1,7 @@
 /* ---------------------------------------------------------------------------------------------------------------------------------------------------- */
-/* personalizare body, nav, header, footer din fiecare pagina */
+/* personalizare body(nav, header, footer) din fiecare pagina */
 body{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, sans-serif;
     color: #333;
     background-color: aliceblue;
     font-size: 16px;
@@ -23,7 +23,7 @@ header img {
 header h1 {
     font-family:'Courier New';
     font-style: italic;
-    font-size: 60px; 
+    font-size: 4em;     /* 4 x 16px */
     color:#e1e6ed;
 }
 
@@ -31,7 +31,6 @@ nav{
     background-color: #3a7ef2;
     text-align: left;
     padding: 15px;
-    font-size: 1.2em;
 }
 
 nav a{
@@ -39,27 +38,24 @@ nav a{
     margin-right: 10px;
     text-decoration: none;
     color: white;
-    font-size: 1.2em;
+    font-size: 1.5em;   /* 1.5 x 16px */
 }
 
 nav a:hover{
     background-color: pink;
     color: #407ecf;
     text-decoration: underline;
-    font-size: 1.5em;
+    font-size: 1.7em;
     font-weight: bold;
 }
 
 footer{
-    display: flex;
-    flex-direction: column;     /* aliniere pe verticala */
-    align-items: center;        /* aliniere pe orizonatala */
     background-color: #407ecf; 
     color: white; 
     padding: 5px; 
-    font-family: Arial, sans-serif; 
     font-size: 1.2em; 
     margin-top: 50px;
+    text-align: center;
 }
 
 
@@ -72,10 +68,10 @@ footer{
     color: #407ecf;
 }
 #acasa p{
+    font-size: 1.3em;
     padding-left: 10px;
 }
 ul {
-    list-style-type: none;
     padding: 0;
 }
 ul li{
@@ -83,7 +79,7 @@ ul li{
     font-size: 1.1em;
 }
 
-ul li b {
+ul li b{
     font-size: 1.2em;
     color: #407ecf;
 }
@@ -94,14 +90,12 @@ li b:hover{
 
 
 
-
-
 /* ------------------------------------------------------------------------------------------------------------------------------------- */
 /* personalizarea tabelului din pagina despre.html */
 table{
-    /* border: 1px solid black; */
     border-collapse: collapse;
     background-color: beige;
+    border: 2px solid black;
 }
 td{
     border: 2px solid black;
@@ -112,15 +106,15 @@ td{
     font-size: 1.2em;
     font-weight: bold;
 }
-#s2{
+
+#s1, #s2, #s3, #s4{
+    margin: 10px 50px;
+    border: 2px solid white;
+    background-color: white;
     font-size: 1.1em;
-    padding-top: 10px;
+    padding: 5px;
 }
 
-#s1, #s3, #s4{
-    font-size: 1.1em;
-    padding: 2px;
-}
 #s1 a, #s3 a{
     white-space: nowrap;
 }
@@ -132,65 +126,6 @@ td{
 ol li{
     padding: 2px;
 }
-
-
-
-
-/* ----------------------------------------------------------------------------------------------------------------------------------------------- */
-/* personalizare 
-ular din pagina inregistreaza.html */
-input::placeholder{
-    color:#3a7ef2;
-    opacity: 0.5;
-}
-
-select{
-    width: 15%;
-    padding: 5px;
-    margin: 8px;
-    border-radius: 5px;
-}
-
-label{
-    font-family:Arial, Helvetica, sans-serif;
-    color:darkred;
-    padding: 5px;
-    margin-bottom: 10px; 
-    display: inline-block;   
-}
-
-legend{
-    font-weight: bold;
-    color: darkred;
-    font-size: 1.2em;
-    padding: 15px;
-    margin: 8px;
-    display: inline-block;
-}
-
-button{
-    color: darkred;
-    background-color:white;
-    height: 3em;
-    width: 9em;
-    font-size: medium;
-    margin: 5px;
-    border: 2px solid #3a7ef2;
-    cursor: pointer;
-    border-radius: 25px;
-    /* margin-bottom: 5px; */
-}
-button:hover {
-    background-color: #20608B;
-    font-size: large;
-}
-
-fieldset{
-    margin: 5px;
-    border: 2px solid #3a7ef2;
-    border-radius: 25px;
-}
-
 
 
 
@@ -217,7 +152,7 @@ fieldset{
     width: 100px;
     height: 50px;
     text-align: center;
-    padding-bottom: 3px;
+    padding-bottom: 5px;
 }
 
 /* Text Overflow */
@@ -238,7 +173,7 @@ fieldset{
 
 /* Transition + Transformation */
 #t:hover{
-    transition: width 2s, height 2s, transform 2s;
+    transition: transform 2s;
     transform: rotate(180deg);
 }
 
@@ -249,11 +184,13 @@ fieldset{
     height: 30px;
     background-color: red;
     animation-name: example;
-    animation-duration: 5s;
+    animation-duration: 3s;
     font-size: 1.5em;
     color: black;
     padding: 10px;
     text-align: left;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
   }
   
   @keyframes example {
@@ -263,24 +200,82 @@ fieldset{
 
 
 
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* personalizare formular din pagina inregistreaza.html */
+#inregistrare{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input::placeholder{
+    color:#3a7ef2;
+}
+
+select{
+    width: 30%;
+    padding: 5px;
+    margin: 8px;
+    border-radius: 5px;
+}
+
+label{
+    font-family:Arial, sans-serif;
+    color:darkred;
+    padding: 5px;
+    margin-bottom: 10px; 
+    display: inline-block;      /*pentru a tine cont de margin/padding pe verticala*/
+}
+
+legend{
+    font-weight: bold;
+    color: darkred;
+    font-size: 1.2em;
+    padding: 15px;
+    margin: 8px;
+}
+
+button{
+    color: darkred;
+    background-color:white;
+    /* relative la dimensiunea curenta = cat cuprinde textul */
+    height: 3em;
+    width: 9em;
+    font-size: medium;
+    margin: 5px;
+    border: 2px solid #3a7ef2;
+    cursor: pointer;
+    border-radius: 25px;
+}
+
+button:hover {
+    background-color: #20608B;
+    font-size: large;
+}
+
+fieldset{
+    margin: 5px;
+    border: 2px solid #3a7ef2;
+    border-radius: 25px;
+}
+
+
 
 
 
   /* ----------------------------------------------------------------------------------------------------------------------------------------------------------------- */
   /* print friendly */
 @media print {
-    nav, footer {
+    nav {
       display: none;
     }
-  
     
     body {
       background-color: white;
       color: black; 
-      font-family: 'Times New Roman', Times, serif; 
-      font-size: 12pt;
+      font-family: Arial;
+      font-size: 12pt;      /* 1pt = 1/72 din 1in= aprox. 0.035 cm */
     }
-  
    
     @page {
       margin: 2cm;
@@ -292,10 +287,6 @@ fieldset{
       font-size: 14pt;
     }
 
-    p {
-      line-height: 1.6;
-      margin-bottom: 10mm;
-    }
   
     input::placeholder, textarea::placeholder {
       visibility: hidden;
@@ -308,18 +299,19 @@ fieldset{
         font-size: 14pt;
     }
 
-    .rcorners, .textEffect, #grad {
+    .textEffect, #grad {
       border: none;
       background: none;
       overflow: visible;
     }
+
   }
   
 
 
 /* ------------------------------------------------------------------------------------------------------------ */
 /* Media query pentru ecranelor mici (telefoane mobile) */
-@media (max-width: 600px) {
+@media only screen and (max-width: 768px) {
     body {
       font-size: 14px; 
       padding: 10px; 
@@ -333,122 +325,141 @@ fieldset{
     }
 
     header h1 {
-        font-size: 1.5em;
-    }
-    
-    .iframe-container {
-        position: relative;
-        width: 100%;
-        padding-bottom: 56.25%; /* Aspect ratio 16:9 */
-        height: 0;
-        overflow: hidden;
-    }
-
-    .container iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+        font-size: 2em;
     }
 
     nav {
-      text-align: center;
-      padding: 5px 0;
-      /* padding: 10px; */
+        text-align: center;
+        padding: 5px 0;
     }
-  
+
     nav a {
-      display: block; 
-      margin-bottom: 5px;
-      font-size: 0.9em;
+        display: block; 
+        margin-bottom: 5px;
+        font-size: 1.2em;
     }
-  
-    footer {
-      font-size: 12px; 
-      padding: 5px;
-    }
-
-    select {
-        width: 200px; /* sau o altă valoare potrivită */
-    }
-
     
-    /* p {
-        text-align: justify;
-    } */
+    footer {
+        font-size: 12px; 
+        padding: 5px;
+    }
 
+    /* pagina despre.html */
+    #grad{
+        height: 2em;
+    }
+    .animation{
+        width: 80%;
+        height: 2em;
+    }
+
+    #s1 a, #s3 a{
+        white-space: wrap;
+    }
+
+    .responsive-iframe{
+        width: 100%;
+        border: none;
+    }
+    
+    /* pagina invat.html */
     #draw canvas {
-        max-width: 100%; /* Limitează lățimea maximă la 100% din container */
-        height: auto; /* Păstrează aspect ratio-ul */
+        max-width: 100%;
     }
 
-    #info,  #table, #draw{
-        align-items: center;
+    #table table {
+        overflow-x: auto; 
     }
 
-    #info h1, #table h1, #draw h1 {
-        font-size: 1.3rem;
+    #table td {
+        white-space: nowrap; 
     }
 
-    #info h3 {
-        font-size: 1.1rem;
+    aside {
+        width: 25% !important;             
+        top: 20px;                    
+    }
+    
+    
+    aside a {
+        text-align: left;
+        white-space: nowrap;   
+        overflow: hidden;      
+        text-overflow: ellipsis; 
+    } 
+
+
+    /* tabelul din pagina persoane.html */
+    .tabel-persoane{
+        overflow-x: auto; 
+        white-space: nowrap; 
     }
 
-    #info p, #table p {
-        font-size: 1rem;
+    /* pagina cumparaturi.html */
+    .cumparaturi{
+        max-width: 100%;
     }
-
-
-    #draw button, #table button {
-        font-size: 1rem;
+    #formularCumparaturi{
+        display: flex;
+        flex-direction: column !important;
+        align-items: center !important;
     }
+  }
 
 
-    #table label, #draw label {
-        font-size: 1rem;
+  @media (max-width: 992px) {
+    .responsive-iframe{
+        width: 100%;
+        border: none;
+    }
+    
+    /* pagina invat.html */
+    #draw canvas {
+        max-width: 100%;
     }
 
     #table table {
         display: block; 
         overflow-x: auto; 
-        white-space: nowrap; 
     }
 
-    #table th,
     #table td {
         white-space: nowrap; 
     }
+
     aside {
-        width: 50px;          
-        max-width: 50px;   
-        margin: 0;            
-        padding: 2px;         
-        font-size: 0.6em;    
+        width: 15% !important;             
+        top: 20px;                    
     }
     
     
     aside a {
-        text-align: center;
-        display: block;        
-        font-size: 0.4em;      
-        padding: 2px 0;        
-        margin-bottom: 2px;    
+        text-align: left;
         white-space: nowrap;   
-        overflow: hidden;      /* Ascunde continutul care depaseste */
-        text-overflow: ellipsis; /* Adauga "..." daca textul depaseste */
+        overflow: hidden;      
+        text-overflow: ellipsis; 
+    } 
+
+    /* tabelul din pagina persoane.html */
+    .tabel-persoane{
+        display: block; 
+        overflow-x: auto; 
+        white-space: nowrap; 
     }
+
   }
-  
 
 
-/* ------------------------------------------------------------------------------------------------------------ */
-/* Galeria video din video.html */
+
+
+
+/* ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* Galeria video din video.html cu CSS Flexbox */
 .gallery {
     display: flex;
     flex-wrap: wrap;            /* permite impartirea elementelor pe mai multe linii */
     flex-direction: row;        /* aliniere pe orizonatala */
-    justify-content: center;    /* aliniere centrata pe verticala */ 
+    justify-content: center;    /* aliniere centrata pe orizontala */ 
 }
 
 .gallery iframe {
@@ -478,19 +489,18 @@ fieldset{
 
 
 
-/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 /* Pagina Invat.html */
 /* Aside */
 aside {
-    width: 500px;                  /* latimea pentru aside */
+    width: 500px;                  
     background-color: #f9f9f9;     
-    padding: 15px;                 /* spatiu interior */
+    padding: 15px;               
     border-radius: 10px;           
-    font-family: Arial, sans-serif; 
-    position: fixed;                /* fixare aside pe pagina */
-    margin-top: 2px;                     /* margine sus */
-    right: 20px;                    /* margine dreapta */
-    border: 2px solid #3a7ef2;           
+    position: fixed;                
+    margin-top: 2px;                     
+    right: 20px;                    
+    border: 2px solid #3a7ef2;            
 }
 
 
@@ -506,22 +516,11 @@ aside a {
 
 
 aside a:hover {
-    background-color: #ee82ee;     /* culoare de fundal la hover */
-    color: white;                  /* culoare text la hover */
-    border-radius: 5px;            /* colturi rotunjite la hover */
-    padding: 15px;            /* adaugare spatiu la stanga la hover */
+    background-color: #ee82ee;     
+    color: white;                 
+    border-radius: 5px;           
+    padding: 15px;            
 }
-
-canvas{
-    border:2px solid black
-}
-.row-delimiter{
-    height: 15px;
-}
-.column-delimiter{
-    width: 50px;
-}
-
 
 /* Stiluri pentru sectiuni */
 #info, #draw, #table {
@@ -530,7 +529,6 @@ canvas{
     margin: 20px;              
     width: 60%;                      
     border-radius: 10px;             
-    font-family: 'Arial', sans-serif; 
 }
 
 
@@ -562,23 +560,22 @@ canvas{
     
 }
 
-/* Stiluri pentru canvas */
+
 #draw canvas {
     display: block;                   /* face canvas-ul un element block */
     margin: 20px auto;                /* centrarea canvas-ului pe pagina */
-
+    border:2px solid black;
 }
 
-#first-row{
+#first-row{     /* al tabelului */
     font-size: 1.2em;
     color:darkred;
     font-weight: bold;
 }
 
 
-
-/* personalizare pagina verofica.html */
-/* Stil pentru articolul cu clasa .user-auth */
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+/* personalizare pagina verifica.html */
 .user-auth {
     background-color: #fff;
     padding: 20px;
@@ -587,7 +584,6 @@ canvas{
     margin: 10px auto;
 }
 
-/* Stil pentru etichete */
 .user-auth label {
     display: block;
     margin-bottom: 8px;
@@ -595,19 +591,18 @@ canvas{
     color: #333;
 }
 
-/* Stil pentru campuri de input */
 .user-auth input[type="text"], .user-auth input[type="password"] {
     width: 100%;
     padding: 10px;
     margin: 8px 0;
     border: 1px solid #ccc;
     border-radius: 4px;
-    box-sizing: border-box;
+    box-sizing: border-box;         /* include padding/margin in latime*/
 }
 
-/* Stil pentru butonul de submit */
-.user-auth input[type="submit"] {
-    background-color: #4CAF50;
+
+.user-auth input[type="submit"]{
+    background-color: #3498db;
     color: white;
     padding: 12px 20px;
     border: none;
@@ -616,131 +611,89 @@ canvas{
 }
 
 .user-auth input[type="submit"]:hover {
-    background-color: #45a049;
+    background-color: #2980b9;
 }
 
-/* Stil pentru mesajul de autentificare */
-.user-auth #auth {
+.user-auth #auth{
     margin-top: 10px;
     font-size: 14px;
     color: red;
+    text-align: center;
 }
 
 
+/* ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 /* personalizare pagina cumparaturi.html */
-/* Main container styling */
 .cumparaturi {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #f9f9f9;
+    width: 600px;
+    margin: 20px auto;
+    border: 2px solid white;
+    background-color: white;
     border-radius: 8px;
 }
 
-/* Heading styles */
 .cumparaturi h1 {
-    color: #2c3e50;
     text-align: center;
-    margin-bottom: 25px;
     font-size: 28px;
+    margin-bottom: 30px;
     border-bottom: 2px solid #3498db;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
 }
 
-/* Form styling */
-.cumparaturi form {
+#formularCumparaturi{
     display: flex;
-    flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
-    gap: 10px;
     margin-bottom: 25px;
-    background-color: #fff;
     padding: 15px;
     border-radius: 6px;
 }
 
-/* Input fields */
-.cumparaturi input {
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
+#produs, #cantitate{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
 }
 
-.cumparaturi input:focus {
-    /* outline: none; */
-    border-color: #3498db;
+.cumparaturi  label{
+    color: black;
+    font-size: 20px;
 }
 
-/* Button styling */
 .cumparaturi button {
-    padding: 12px 20px;
     background-color: #3498db;
     color: white;
+    padding: 12px 20px;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
     font-size: 16px;
-    font-weight: bold;
-    transition: background-color 0.2s;
+    height: 40px;
+    margin-top: 40px;
+    margin-left: 20px;
 }
 
 .cumparaturi button:hover {
     background-color: #2980b9;
 }
 
-/* .cumparaturi button:active {
-    transform: translateY(1px);
-} */
-
-/* Table styling */
-.cumparaturi table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    background-color: white;
-    border-radius: 6px;
+#tabelProduse{
+    background-color: aliceblue;
+    margin: 20px auto;
+    width: 80%;
 }
 
-.cumparaturi th {
-    background-color: #3498db;
-    color: white;
-    text-align: left;
-    padding: 12px 15px;
+thead th{
     font-weight: bold;
+    font-size: 25px;
 }
 
-.cumparaturi td{
-    padding: 12px 15px;
+#stocare{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-
-.cumparaturi tr:nth-child(even) {
-    background-color: #f5f5f5;
-}
-
-.cumparaturi tr:hover {
-    background-color: #f0f7fc;
-}
-
-/* Responsive adjustments */
-@media (max-width: 600px) {
-    .cumparaturi form {
-        flex-direction: column;
-    }
-    
-    .cumparaturi input, 
-    .cumparaturi button {
-        width: 100%;
-    }
-    
-    .cumparaturi table {
-        font-size: 14px;
-    }
-    
-    .cumparaturi th, 
-    .cumparaturi td {
-        padding: 8px 10px;
-    }
+#metodaStocare{
+    width: 150px;
 }

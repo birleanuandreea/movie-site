@@ -1,18 +1,31 @@
 <section class="cumparaturi">
     <h1>Cumpărături</h1>
-    <form>
-        <input type="text" id="numeProdus" placeholder="Nume produs">
-        <input type="number" id="cantitate" placeholder="Cantitate">
-        <button onclick="adaugaProdus()">Adaugă</button>
-    </form>
-    <section>
-        <table id="tabelProduse">
+    <form id="formularCumparaturi">
+        <section id="produs">
+            <label for="numeProdus">Nume Produs</label>
+            <input type="text" id="numeProdus">
+        </section>
+        <section id="cantitate">
+            <label for="cantitateProdus">Cantitate</label>
+            <input type="number" id="cantitateProdus">
+        </section>
+        <button type="button" onclick="inregistrareProdus()">Adaugă</button>
+    </form>   
+    <section id="stocare">   
+        <select id="metodaStocare">
+            <option value="localStorage">localStorage</option>
+            <option value="indexedDB">IndexedDB</option>
+        </select> 
+    </section> 
+    <table id="tabelProduse">
+        <thead>
             <tr>
                 <th>Nr.</th>
                 <th>Nume Produs</th>
                 <th>Cantitate</th>
             </tr>
-        </table>
-    </section>
+        </thead>
+        <tbody id="lista-produse">
+        </tbody>
+    </table>
 </section>
-
