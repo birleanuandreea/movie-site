@@ -22,7 +22,7 @@ The website was built according to the following requirements:
    Interactive components managed using vanilla JavaScript.
 
 6. **Custom HTTP Server**  
-   A Node.js-based server that allows browsing the contents of folders on the local disk.
+   A Python server that allows browsing the contents of folders on the local disk.
 
 7. **Single Page Application (SPA) using AJAX**  
    Dynamic content loading without full page reloads using AJAX requests.
